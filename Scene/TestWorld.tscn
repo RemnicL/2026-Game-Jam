@@ -2,11 +2,29 @@
 
 [ext_resource type="PackedScene" uid="uid://2uu6s2hvfkna" path="res://World/world.tscn" id="1_vnckk"]
 [ext_resource type="PackedScene" uid="uid://ddmlrct01q5cl" path="res://Character/player.tscn" id="2_7b7to"]
+[ext_resource type="Texture2D" uid="uid://dq4uvyl28grn6" path="res://Resources/Platform/Untitled_Artwork 2.jpg" id="2_aqboh"]
+[ext_resource type="PackedScene" uid="uid://crigjnca6h7vi" path="res://Starting/starting.tscn" id="3_7b7to"]
 
 [node name="TestWorld" type="Node2D" unique_id=1306583025]
 
+[node name="UntitledArtwork2" type="Sprite2D" parent="." unique_id=1727918851]
+position = Vector2(255.99998, -178.00002)
+scale = Vector2(0.6163056, 0.6109215)
+texture = ExtResource("2_aqboh")
+
 [node name="World" parent="." unique_id=340104072 instance=ExtResource("1_vnckk")]
+position = Vector2(0, 66)
+
+[node name="UntitledArtwork3" type="Sprite2D" parent="." unique_id=147910080]
+position = Vector2(113, -508)
+scale = Vector2(0.5887258, 0.6258532)
+texture = ExtResource("2_aqboh")
+
+[node name="Starting" parent="." unique_id=1704869054 instance=ExtResource("3_7b7to")]
+texture_filter = 1
+position = Vector2(93, 13)
 
 [node name="Player" parent="." unique_id=1331628657 instance=ExtResource("2_7b7to")]
-position = Vector2(33, -412)
+position = Vector2(136, -1332)
 rotation = -1.7484555e-07
+can_control = false
