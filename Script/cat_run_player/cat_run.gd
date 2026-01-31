@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
-@export var speed: float = 400.0
+@export var speed: float = 600.0
 @export var jump_velocity: float = -700.0
 @export var can_control: bool = true  # false=开始界面不响应输入，true=正常游戏
 
-@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var anim: AnimatedSprite2D = $Cat
+@onready var ColR: CollisionPolygon2D = $CollisionR
+@onready var ColL: CollisionPolygon2D = $CollisionL
 
 var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity"))
 
@@ -43,10 +45,19 @@ func _physics_process(delta: float) -> void:
 		if dir < 0:
 			anim.flip_h = false
 			anim.position.x = 0
+			ColL.disabled = false
+			ColR.disabled = true
+			
+			
 		else:
 			anim.flip_h = true
 			anim.position.x = -73
+			ColL.disabled = true
+			ColR.disabled = false
+			
+			
 	else:
+		else:
 		if anim.sprite_frames and anim.sprite_frames.has_animation("Idle"):
 			anim.play("Idle")
 		else:

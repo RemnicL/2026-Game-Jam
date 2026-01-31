@@ -51,27 +51,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_3c51y"]
-points = PackedVector2Array(86.8421, -15.789444, 60.52631, 22.36844, -13.157905, 31.578945, -69.73684, 2.6315536, -72.36841, -44.736862, 1.9721978e-05, -60.526314, 80.263176, -55.26313)
-
-[node name="Player" type="CharacterBody2D" unique_id=1331628657 groups=["player"]]
-position = Vector2(-8.61, -1.585)
-rotation = -6.2831855
+[node name="Player" type="CharacterBody2D" unique_id=1331628657]
 script = ExtResource("1_1ob4a")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1985003902]
-position = Vector2(8.610001, 1.5850016)
-scale = Vector2(0.76, 0.76)
+[node name="Cat" type="AnimatedSprite2D" parent="." unique_id=1985003902]
 sprite_frames = SubResource("SpriteFrames_bxcq7")
 animation = &"Move"
-flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=407105403]
-position = Vector2(8.609994, 32.585003)
+[node name="CollisionR" type="CollisionPolygon2D" parent="." unique_id=562962582]
+position = Vector2(-18, 75)
 rotation = 3.1415925
-scale = Vector2(0.76, 0.76)
-shape = SubResource("ConvexPolygonShape2D_3c51y")
+polygon = PackedVector2Array(65.00001, -49.99999, 50.000008, -39.99999, 43.000008, -56.99999, 34.000008, -57.999996, 21.000008, -38.999996, -22.999992, -36.000004, -47.99999, -59.000004, -63.999992, -56.00001, -68.99999, -31.000011, -89.99999, -49.00001, -103.99999, -43.00001, -104.99999, -21.000011, -75, 31.99999, -112.00001, 59.999985, -113.000015, 105.999985, -93.00002, 160.99998, -65.00003, 176.99998, -52.00002, 140, -10.000019, 133, 25.999977, 164, 44.999985, 97.00001, 30.999992, 54.000008, 61, 25.000011, 80, -6.9999886, 76.00001, -42.99999)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=301827689]
 position = Vector2(-1.0000004, 1.9999999)
 position_smoothing_enabled = true
+
+[node name="CollisionL" type="CollisionPolygon2D" parent="." unique_id=869149861]
+position = Vector2(-26, 54)
+rotation = 3.1415927
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(65.00001, -49.99999, 50.000008, -39.99999, 43.000008, -56.99999, 34.000008, -57.999996, 21.000008, -38.999996, -22.999992, -36.000004, -47.99999, -59.000004, -63.999992, -56.00001, -68.99999, -31.000011, -89.99999, -49.00001, -103.99999, -43.00001, -104.99999, -21.000011, -75, 31.99999, -112.00001, 59.999985, -113.000015, 105.999985, -93.00002, 160.99998, -65.00003, 176.99998, -52.00002, 140, -10.000019, 133, 25.999977, 164, 44.999985, 97.00001, 30.999992, 54.000008, 61, 25.000011, 80, -6.9999886, 76.00001, -42.99999)
