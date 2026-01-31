@@ -43,11 +43,16 @@ animations = [{
 }],
 "loop": true,
 "name": &"Move",
-"speed": 7.0
+"speed": 9.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4hbg"]
-size = Vector2(149, 94.5)
+size = Vector2(154, 95.25002)
 
 [node name="Player" type="CharacterBody2D" unique_id=1331628657]
 rotation = -6.2831855
@@ -57,12 +62,11 @@ script = ExtResource("1_1ob4a")
 position = Vector2(-36, -16)
 sprite_frames = SubResource("SpriteFrames_bxcq7")
 animation = &"Move"
-frame_progress = 0.09031221
 offset = Vector2(70, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=407105403]
-position = Vector2(0.5, 35)
-rotation = -3.1415927
+position = Vector2(-1.9999999, 34.62499)
+rotation = 3.1415925
 shape = SubResource("RectangleShape2D_v4hbg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=301827689]

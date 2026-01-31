@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var speed: float = 220.0
-@export var jump_velocity: float = -420.0
+@export var speed: float = 400.0
+@export var jump_velocity: float = -700.0
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity"))
 func _physics_process(delta: float) -> void:
@@ -19,14 +19,11 @@ func _physics_process(delta: float) -> void:
 
 	# 移动（Godot 4 的角色标准写法）
 	move_and_slide()
-	print(scale.x)
-	# 动画
-	print(dir)
+	
 	if dir != 0:
-		#scale.x = 1
 		anim.play("Move")
-		#scale.x = dir
-		
+		var base_scale_x := 1.0 # 或者在 _ready() 里记录 scale.x 的绝对值
+		scale.x = abs(base_scale_x) * ( -1 if dir < 0 else 1 )
 	else:
 		anim.stop()
 	#elif dir < 0:
