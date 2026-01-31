@@ -1,11 +1,16 @@
 extends CharacterBody2D
 
-@export var speed: float = 400.0
+@export var speed: float = 600.0
 @export var jump_velocity: float = -700.0
-@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var anim: AnimatedSprite2D = $Cat
+@onready var ColR: CollisionPolygon2D = $CollisionR
+@onready var ColL: CollisionPolygon2D = $CollisionL
 
-var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity"))
+
+var gravity: float = 1500.0#float(ProjectSettings.get_setting("physics/2d/default_gravity"))
 func _physics_process(delta: float) -> void:
+	print(gravity)
+
 	# 重力
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -28,18 +33,16 @@ func _physics_process(delta: float) -> void:
 		if dir < 0:
 			anim.flip_h = false
 			anim.position.x = 0
+			ColL.disabled = false
+			ColR.disabled = true
+			
 			
 		else:
 			anim.flip_h = true
 			anim.position.x = -73
+			ColL.disabled = true
+			ColR.disabled = false
 			
 			
 	else:
 		anim.stop()
-	#elif dir < 0:
-		#scale.x = -1
-		#anim.play("Move")
-	#else:
-		#pass
-		## 不动时：停在当前帧或你可以做一个 Idle 动画
-		##anim.stop()
