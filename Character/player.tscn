@@ -51,8 +51,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4hbg"]
-size = Vector2(154, 95.25002)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_3c51y"]
+points = PackedVector2Array(77.631584, -17.105236, 55.263153, 9.210545, 14.9999895, 34.00001, -69.73684, 2.6315536, -85.999985, -51.000023, 44.00002, -61.999977, 78.94738, -47.3684)
 
 [node name="Player" type="CharacterBody2D" unique_id=1331628657]
 rotation = -6.2831855
@@ -60,13 +60,15 @@ script = ExtResource("1_1ob4a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1985003902]
 position = Vector2(36, 6.2944396e-06)
+scale = Vector2(0.76, 0.76)
 sprite_frames = SubResource("SpriteFrames_bxcq7")
 animation = &"Move"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=407105403]
-position = Vector2(-30.000006, 33.999996)
+position = Vector2(-5.722046e-06, 33)
 rotation = 3.1415925
-shape = SubResource("RectangleShape2D_v4hbg")
+scale = Vector2(0.76, 0.76)
+shape = SubResource("ConvexPolygonShape2D_3c51y")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=301827689]
 position_smoothing_enabled = true
