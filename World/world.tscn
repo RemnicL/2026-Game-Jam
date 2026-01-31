@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://2uu6s2hvfkna"]
 
+[ext_resource type="Texture2D" uid="uid://cb7mgq72g4enq" path="res://Resources/BackGround/ChatGPT Image Jan 31, 2026, 03_19_09 AM.png" id="1_8a836"]
 [ext_resource type="Texture2D" uid="uid://dyy1paywmwlpv" path="res://Resources/Platform/50ea41f3-b643-4f3c-ab53-e483d7f7d3c4.png" id="1_emx41"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_62w18"]
@@ -3459,6 +3460,11 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_3f78f")
 
 [node name="World" type="Node2D" unique_id=340104072]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1665738904]
+position = Vector2(1160.2617, -585.1421)
+scale = Vector2(3.4894764, 2.6940765)
+texture = ExtResource("1_8a836")
 
 [node name="Platform" type="TileMapLayer" parent="." unique_id=866273013]
 use_parent_material = true
