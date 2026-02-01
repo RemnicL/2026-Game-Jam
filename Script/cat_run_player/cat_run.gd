@@ -11,14 +11,18 @@ extends CharacterBody2D
 var prevMoving: bool = false
 @export var jump_velocity: float = -700.0
 @export var can_control: bool = true  # false=开始界面不响应输入，true=正常游戏
+@export var spawnPt: int = 0
 @onready var anim0: AnimatedSprite2D = $CatO
 @onready var anim1: AnimatedSprite2D = $CatN
 @onready var ColR: CollisionPolygon2D = $CollisionR
 @onready var ColL: CollisionPolygon2D = $CollisionL
 @onready var Block0: TileMapLayer = get_parent().get_node("Blocks")
 @onready var Block1: TileMapLayer = get_parent().get_node("Ghost Blocks")
-@onready var Background1: Sprite2D = get_parent().get_node("Day")
-@onready var Background2: Sprite2D = get_parent().get_node("Night")
+@onready var Obj1: TileMapLayer = get_parent().get_node("Objects")
+@onready var portal1: TileMapLayer = get_parent().get_node("portal1")
+@onready var portal2: TileMapLayer = get_parent().get_node("portal2")
+@onready var Background2: Sprite2D = get_parent().get_node("Backgrounds/Night")
+@onready var Background1: Sprite2D = get_parent().get_node("Backgrounds/Day")
 
 
 var dir:float = 0.0
@@ -27,9 +31,21 @@ var status:int = 0
 var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity"))
 
 
-func respawn() ->void:
-	self.position.x= 100
-	self.position.y =-700
+func respawn(pos:int) ->void:
+	if pos == 0:
+		self.position.x= 100
+		self.position.y =-700
+		status = 0
+	if pos == 1:
+		self.position.x= 1460
+		self.position.y =-2800
+		status = 0
+	if pos == 2:
+		self.position.x= 14225
+		self.position.y =-2800
+		status = 1
+	velocity.x = 0
+	velocity.y = 0
 
 
 func turn(direction: int) -> void:
@@ -53,7 +69,7 @@ func _ready() -> void:
 	
 	
 func _physics_process(delta: float) -> void:
-	debug_velocity = velocity
+	#debug_velocity = velocity
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
@@ -149,23 +165,42 @@ func _physics_process(delta: float) -> void:
 		collision_mask = 0b00000000000000000000000000000001
 		Block1.modulate.a = 0.2
 		Block0.modulate.a = 1
+		Obj1.modulate.a = 1
+		portal1.modulate.a = 1
+		portal2.modulate.a = 0.2
 	else:
 		collision_mask = 0b00000000000000000000000000000010
 		Block0.modulate.a = 0.2
 		Block1.modulate.a = 1
-		
+		Obj1.modulate.a = 0.2
+		portal2.modulate.a = 1
+		portal1.modulate.a = 0.2
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		respawn()
+		respawn(spawnPt)
 
 
-func _on_area_2d_2_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		self.position.x = 4829
-		self.position.y = -1901
+	
+		
 	
 	
 	
 	
 	
 	
+
+
+func _on_pa_1_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player") and status == 0:
+		self.position.x = 1440
+		self.position.y = -2560
+		velocity.x = 0
+		spawnPt = 1
+
+
+func _on_pa_2_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player") and status == 1:
+		self.position.x = 14225
+		self.position.y = -2560
+		velocity.x = 0
+		spawnPt = 2

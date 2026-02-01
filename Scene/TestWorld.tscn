@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://2uu6s2hvfkna" path="res://World/world.tscn" id="1_vnckk"]
 [ext_resource type="PackedScene" uid="uid://ddmlrct01q5cl" path="res://Character/player.tscn" id="2_7b7to"]
 [ext_resource type="Texture2D" uid="uid://dq4uvyl28grn6" path="res://Resources/Platform/Untitled_Artwork 2.jpg" id="2_aqboh"]
+[ext_resource type="PackedScene" uid="uid://c0dvxc3xaeigt" path="res://Scene/World/world_template.tscn" id="2_l2t6r"]
 [ext_resource type="PackedScene" uid="uid://crigjnca6h7vi" path="res://Starting/starting.tscn" id="3_7b7to"]
+[ext_resource type="Texture2D" uid="uid://bynnadj7aljgq" path="res://Resources/BackGround/press-WAD-to-move-space-to-1-31-2026.png" id="4_tkynt"]
 
 [node name="TestWorld" type="Node2D" unique_id=1306583025]
 
@@ -13,10 +15,10 @@ scale = Vector2(0.6163056, 0.6109215)
 texture = ExtResource("2_aqboh")
 
 [node name="World" parent="." unique_id=340104072 instance=ExtResource("1_vnckk")]
-position = Vector2(0, 66)
+position = Vector2(353, 3240)
 
 [node name="UntitledArtwork3" type="Sprite2D" parent="." unique_id=147910080]
-position = Vector2(113, -508)
+position = Vector2(-2, -544)
 scale = Vector2(0.5887258, 0.6258532)
 texture = ExtResource("2_aqboh")
 
@@ -27,3 +29,12 @@ position = Vector2(93, 13)
 [node name="Player" parent="." unique_id=1331628657 groups=["player"] instance=ExtResource("2_7b7to")]
 position = Vector2(136, -1332)
 can_control = false
+
+[node name="WorldTemplate" parent="." unique_id=1370078868 instance=ExtResource("2_l2t6r")]
+position = Vector2(-115, -28)
+
+[node name="PressWadToMoveSpaceTo1312027" type="Sprite2D" parent="WorldTemplate" unique_id=1081765798]
+texture_filter = 1
+position = Vector2(120, -255)
+scale = Vector2(0.41015625, 0.38081396)
+texture = ExtResource("4_tkynt")
